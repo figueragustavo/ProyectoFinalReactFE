@@ -13,7 +13,7 @@ const Main = () => {
     return ( 
         <>
            <Nav />
-            <h1 className="text-center">Películas</h1>
+            <h1 className="text-center">Trailers</h1>
             <Movies />
             
         </>
