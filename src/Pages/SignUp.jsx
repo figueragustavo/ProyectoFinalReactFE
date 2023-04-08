@@ -1,6 +1,44 @@
-import React from "react";
+import React , { useState } from "react";
+import Swal from 'sweetalert2';
+import fondoLogin from '../fondoLogin.jpg';
 
-function Signup (){
+
+const Signup = () => {
+const [values, setValues] = useState({
+    nombre: '',
+    email: '',
+    contraseña: ''
+    
+});
+const handleSubmit = e => {
+    e.preventDefault();
+    if(values.nombre === ''){
+        Swal.fire ('Nombre requerido')
+      }
+    if( values.email === ''  ){
+          Swal.fire ('Mail requerido')
+    } else {
+        Swal.fire('Contraseña requerida')
+        setValues({
+            nombre: '',
+            email: '',
+            contraseña: ''
+        })
+        console.log(values)
+    }
+    const handleChange = e => {
+        const { target } = e;
+        const { nombre, email,contraseña,  value } = target;
+        const newValues = {
+            ...values,
+            [nombre] : value,
+            [email] : value,
+            [contraseña] : value,
+
+        }
+        setValues(newValues);
+    }
+}
             return(
                 <section class="vh-100">
           <div class="container h-100">
@@ -62,6 +100,7 @@ function Signup (){
         
                       </div>
                       <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+                      <img src={fondoLogin} class="img-fluid" alt="Sample image" />
                       </div>
                     </div>
                   </div>

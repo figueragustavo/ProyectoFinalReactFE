@@ -1,20 +1,22 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AppContext } from "../Context/AppContext";
-import Movies from "./Movies";
-import Nav from "./Nav";
+
+import Search  from "../Hooks/Search";
 
 
 
 const Main = () => {
 
     const movies  = useContext(AppContext);
+   // const searchKey = useState(UseFetch);
+  
     const url = "https://image.tmdb.org/t/p/original";
 
     return ( 
         <>
-           <Nav />
-            <h1 className="text-center">Trailers</h1>
-            <Movies />
+           <Search />
+            
+            
             
         </>
         
