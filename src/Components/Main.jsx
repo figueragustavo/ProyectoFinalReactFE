@@ -1,9 +1,6 @@
 import { useContext, useState } from "react";
 import { AppContext } from "../Context/AppContext";
-
 import Search  from "../Hooks/Search";
-
-
 
 const Main = () => {
 
@@ -15,8 +12,6 @@ const Main = () => {
     return ( 
         <>
            <Search />
-            
-            
             
         </>
         

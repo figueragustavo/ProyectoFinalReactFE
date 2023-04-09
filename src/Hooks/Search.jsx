@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import React from "react";
 import axios from 'axios';
+import Swal from 'sweetalert2';
 import { BiCameraMovie } from 'react-icons/bi';
 import { GiPopcorn } from 'react-icons/gi';
 import { Link } from 'react-router-dom';
@@ -78,7 +79,11 @@ function Search () {
     console.log(searchKey)
  } 
 
-
+ const handleSubmit = (e) => {
+  e.preventDefault();
+  Swal.fire ('Debe contratar el paquete Premium para ver las Peliculas')
+    
+  }
   
  useEffect(()=> {
   fetchMovies();
@@ -97,7 +102,7 @@ function Search () {
                             <div className="collapse navbar-collapse" id="navbarSupportedContent">
                                 <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                                     <li className="nav-item">
-                                        <Link className="nav-link active text-white-50" aria-current="page" to="/peliculas"><BiCameraMovie /> Películas</Link>
+                                        <Link className="nav-link active text-white-50" aria-current="page" to="/movies" onClick={handleSubmit}><BiCameraMovie /> Películas</Link>
                                     </li>
                                     <li className="nav-item">
                             <Link className="nav-link text-white-50" aria-current="page" to="/favoritos"><FiHeart /> Favoritos</Link>
@@ -119,7 +124,7 @@ function Search () {
                         </div>
                         
                     </nav>
-                    <div> 
+                    <div>  
                       <main> 
                         {movie ? (
                   <div className="viewtrailer" style={{

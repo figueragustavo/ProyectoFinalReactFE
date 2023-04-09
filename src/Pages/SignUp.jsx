@@ -1,44 +1,50 @@
-import React , { useState } from "react";
+import React , { useContext, useState } from "react";
 import Swal from 'sweetalert2';
 import fondoLogin from '../fondoLogin.jpg';
+import axios from 'axios';
+import AppContextProvider from "../Context/AppContext";
+//import {BASE_URL} from '../../utils/BASE_URL' ; sujeto a modificacion
 
 
 const Signup = () => {
-const [values, setValues] = useState({
-    nombre: '',
-    email: '',
-    contraseña: ''
+const {userValues, setUserValues} = useContext() // <--aca va (context)
     
-});
-const handleSubmit = e => {
-    e.preventDefault();
-    if(values.nombre === '' || values.email === '' || values.contraseña === '' ){
-        Swal.fire ('No deje los campos vacios')
+const onhandleSubmit = (e) => {
+    e.preventDefault()
+   // createHashRouter(); esto sujeto a modificacion
       
-    } else {
-        Swal.fire('Regitrado!')
-        setValues({
-            nombre: '',
-            email: '',
-            contraseña: ''
-        })
-        console.log(values)
-    }
-   
-};
-const handleChange = e => {
-  const { target } = e;
-  const { nombre, email, contraseña,  value } = target;
-  const newValues = {
-      ...values,
-      [nombre] : value,
-      [email] : value,
-      [contraseña] : value
+}
+const onhandleChange = (e) => {
+  e.preventDefault()
+  const { name, value } = e.target;
+ setUserValues ({
+      ...userValues,
+      [name] : value
 
-  }
-  setValues(newValues);
-};
-            return(
+  })
+}
+//const createUser = async () => {
+  //try{
+  //  const request = await axios.post(`${BASE_URL}/users/register`, userValues);
+ //  const data = request.data   esto va tambien 
+//    console.log(data)
+ //     if(data.created) {
+ //       Swal.fire(data.msg)
+ //     } else{
+  //      Swal.fire(data.msg)
+  //    }
+
+ // }catch (error){
+//    console.log(error)
+//    if(error.response.data.code === ""){
+//      return  Swal.fire ('Este email ya se encuentra registrado')
+//    }else{
+//      return Swal.fire(error.msg)
+ //   }
+  
+//  }
+// }
+      return(
                 <section className="vh-100">
           <div className="container h-100">
             <div className="row d-flex justify-content-center align-items-center h-100">
@@ -50,12 +56,12 @@ const handleChange = e => {
         
                         <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Registrate</p>
         
-                        <form className="mx-1 mx-md-4" onClick={handleSubmit}>
+                        <form className="mx-1 mx-md-4" >
         
                           <div className="d-flex flex-row align-items-center mb-4">
                             <i className="fas fa-user fa-lg me-3 fa-fw"></i>
                             <div className="form-outline flex-fill mb-0">
-                              <input type="nombre" name ="nombre" class="form-control" value= {values.nombre} onChange={handleChange} />
+                              <input type="nombre" name ="nombre" class="form-control" value= {userValues.nombre} onChange={onhandleChange} />
                               <label htmlfor="nombre" className="form-label" for="form3Example1c">Nombre</label>
                             </div>
                           </div>
@@ -63,7 +69,7 @@ const handleChange = e => {
                           <div className="d-flex flex-row align-items-center mb-4">
                             <i className="fas fa-envelope fa-lg me-3 fa-fw"></i>
                             <div className="form-outline flex-fill mb-0">
-                              <input type="email" name ="email" className="form-control" value= {values.email} onChange={handleChange}/>
+                              <input type="email" name ="email" className="form-control" value= {userValues.email} onChange={onhandleChange}/>
                               <label htmlfor="email" className="form-label" for="form3Example3c">Mail</label>
                             </div>
                           </div>
@@ -71,7 +77,7 @@ const handleChange = e => {
                           <div className="d-flex flex-row align-items-center mb-4">
                             <i className="fas fa-lock fa-lg me-3 fa-fw"></i>
                             <div className="form-outline flex-fill mb-0">
-                              <input type="contraseña" name ="contraseña" class="form-control" value= {values.contraseña} onChange={handleChange} />
+                              <input type="contraseña" name ="contraseña" class="form-control" value= {userValues.contraseña} onChange={onhandleChange} />
                               <label htmlfor="contraseña" className="form-label" for="form3Example4c">Contraseña</label>
                             </div>
                           </div>
@@ -79,7 +85,7 @@ const handleChange = e => {
                           <div className="d-flex flex-row align-items-center mb-4">
                             <i className="fas fa-key fa-lg me-3 fa-fw"></i>
                             <div className="form-outline flex-fill mb-0">
-                              <input type="contraseña" name ="contraseña" className="form-control" value= {values.contraseña} onChange={handleChange} />
+                              <input type="contraseña" name ="contraseña" className="form-control" value= {userValues.contraseña} onChange={onhandleChange} />
                               <label htmlfor="contraseña" className="form-label" for="form3Example4cd">Repetí tu contraseña</label>
                             </div>
                           </div>
@@ -92,7 +98,7 @@ const handleChange = e => {
                           </div>
         
                           <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                            <button type="button" className="btn btn-primary btn-lg" onClick={handleSubmit}>Registrarse</button>
+                            <button type="button" className="btn btn-primary btn-lg" onClick={onhandleSubmit}>Registrarse</button>
                           </div>
         
                         </form>

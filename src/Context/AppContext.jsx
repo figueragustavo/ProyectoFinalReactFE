@@ -1,5 +1,7 @@
 import axios from 'axios';
 import { createContext, useEffect, useState } from "react";
+import Signup from '../Pages/SignUp';
+import Login from '../Pages/Login';
 
 export const AppContext = createContext();
 const AppContextProvider = ({ children}) => {
@@ -10,7 +12,10 @@ const AppContextProvider = ({ children}) => {
   
     const [movies, setMovies] = useState([]);
     const [searchKey, setSearchKey] = useState("");
-   
+   const [userValues, setUserValues] = useState({
+    email: "",
+    contraseña: "",
+   })
    
     useEffect(() =>{
         axios
@@ -23,7 +28,7 @@ const AppContextProvider = ({ children}) => {
     },[])
 
 
-    return <AppContext.Provider value={{movies}}>{children}</AppContext.Provider>
+    return <AppContext.Provider value={{movies, userValues, setUserValues}}>{children}</AppContext.Provider>
 };
 
 export default AppContextProvider;

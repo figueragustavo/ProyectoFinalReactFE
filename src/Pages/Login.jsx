@@ -1,37 +1,43 @@
-import React , { useState } from "react";
+import React , { useContext } from "react";
 import Swal from 'sweetalert2';
 import fondoLogin from '../fondoLogin.jpg';
+import axios from 'axios';
+import AppContextProvider from "../Context/AppContext";
+//import {BASE_URL} from '../../utils/BASE_URL' ;   sujeto a modificacion
 
-const Login = () => {
-const [values, setValues] = useState({
-    email: '',
-    contraseña: ''
-});
-const handleSubmit = e => {
-    e.preventDefault();
-    if(values.email === '' ){
-        Swal.fire ('email requerido')
-    } else if( values.contraseña === '' ) {
-        Swal.fire('Contraseña requerida')
-        setValues({
-            email: '',
-            contraseña: ''
-        })
-        console.log(values)
-    }
+
+const Login = () => {const {userValues, setUserValues} = useContext()  // <--aca va (context)
     
-}
-const handleChange = e => {
+const onhandleSubmit = (e) => {
+    e.preventDefault()
+     //loginUser();  //tambien va 
       
-  const { target } = e;
-  const { email, contraseña, value } = target;
-  const newValues = {
-      ...values,
-      [email] : value,
-      [contraseña] : value,
-  }
-  setValues(newValues);
 }
+const onhandleChange = (e) => {
+  e.preventDefault()
+  const { name, value } = e.target;
+ setUserValues ({
+      ...userValues,
+      [name] : value
+
+  })
+}
+//const loginUser = async () => {
+ // try{
+ //   const request = await axios.post(`${BASE_URL}/users/login`, userValues);
+ //   const data = request.data
+ //   console.log(data)
+  //    if(data.created) {
+  //      Swal.fire(data.msg)
+  //    } else{
+  //      Swal.fire(data.msg)
+  //    }
+ // }catch (error){
+ //   console.log(error)
+ //   return Swal.fire(error.msg)
+    
+ // }
+//}
     return(
         <section className="vh-100">
   <div className="container h-100">
@@ -50,7 +56,7 @@ const handleChange = e => {
                   <div className="d-flex flex-row align-items-center mb-4">
                     <i className="fas fa-envelope fa-lg me-3 fa-fw"></i>
                     <div className="form-outline flex-fill mb-0">
-                      <input type="email" name ="email" className="form-control" value= {values.email} onChange={handleChange} />
+                      <input type="email" name ="email" className="form-control" value= {userValues.email} onChange={onhandleSubmit} />
                       <label htmlfor="email" className="form-label" for="form3Example3c">Mail</label>
                     </div>
                   </div>
@@ -58,18 +64,14 @@ const handleChange = e => {
                   <div className="d-flex flex-row align-items-center mb-4">
                     <i className="fas fa-lock fa-lg me-3 fa-fw"></i>
                     <div className="form-outline flex-fill mb-0">
-                      <input type="contraseña" name ="contraseña" className="form-control"  value= {values.contraseña} onChange={handleChange} />
+                      <input type="contraseña" name ="contraseña" className="form-control"  value= {userValues.contraseña} onChange={onhandleSubmit} />
                       <label htmlfor="contraseña" className="form-label" for="form3Example4c">Contraseña</label>
                     </div>
                   </div>
-
-
                   <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                    <button type="button" className="btn btn-primary btn-lg" onClick={handleSubmit}>Iniciar sesión</button>
+                    <button type="button" className="btn btn-primary btn-lg" onClick={onhandleSubmit}>Iniciar sesión</button>
                   </div>
-
                 </form>
-
               </div>
               <div className="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
               <img src={fondoLogin} className="img-fluid" alt="Sample image" />
