@@ -4,6 +4,7 @@ import axios from 'axios';
 import { BiCameraMovie } from 'react-icons/bi';
 import { GiPopcorn } from 'react-icons/gi';
 import { Link } from 'react-router-dom';
+import { FiHeart } from 'react-icons/fi';
 import Youtube from 'react-youtube';
 
 
@@ -20,6 +21,7 @@ function Search () {
   const [movie, setMovie] = useState ({ title: "loading Movies"});
   const [movies, setMovies] = useState([]);
   const [playing, setPlaying] = useState(false);
+  const [activado, setActivado] = useState(false);
 
 
   //peticion api
@@ -98,10 +100,15 @@ function Search () {
                                         <Link className="nav-link active text-white-50" aria-current="page" to="/peliculas"><BiCameraMovie /> Películas</Link>
                                     </li>
                                     <li className="nav-item">
+                            <Link className="nav-link text-white-50" aria-current="page" to="/favoritos"><FiHeart /> Favoritos</Link>
+                        </li>
+                                    <li className="nav-item">
                                         <Link className="nav-link text-white-50" aria-current="page" to="/login"> Login</Link>
                                     </li>
                                     <Link className="nav-link text-white-50" aria-current="page" to="/signup">Registrarse</Link>
+          
                                 </ul>
+                          
                                 <form className="d-flex" onClick={ searchMovies}>
                             <input className="form-control me-2" type="text" placeholder='Search' onChange={(e) => setSearchKey(e.target.value)} />
                             <button className="btn btn-outline-success">Buscar</button>
@@ -123,10 +130,7 @@ function Search () {
                   videoId ={trailer.key}
                   className ="reproductor container"
                   containerClassname={"youtube-container amru"}
-                  
-                    
-                    
-                  
+             
                   /> 
                 
                  <button onClick={() => setPlaying(false)} className="boton"> Cerrar
@@ -160,6 +164,7 @@ function Search () {
                 <h5 className="card-title">{movie.title}</h5>
                 </div>
                 <div className='d-flex justify-content-between'>
+                <Link to={{pathname:`/favoritos/${movie.id}`, state:{some:movie.id}}} className="text-danger" ><FiHeart fill={activado ? "red" : "none"} onClick={() => activado ? setActivado(false): setActivado(true)} /></Link >
             </div>
         </div>
     </div>

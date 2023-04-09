@@ -3,7 +3,6 @@
   max-width: 100%;
   background-size: auto;
   background-position: center;
-
   display: flex;
   align-items: flex-end;
 }
@@ -16,6 +15,7 @@
   padding: 10px 15px;
   cursor: pointer;
   margin-bottom: 10px;
+  margin-top: -95px;
 }
 .reproductor{
   width: 100%;
