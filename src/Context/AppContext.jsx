@@ -17,6 +17,7 @@ const AppContextProvider = ({ children}) => {
     contraseña: "",
    })
    
+   
     useEffect(() =>{
         axios
         .get("https://api.themoviedb.org/3/movie/popular?api_key=98cc862b0f47f735f96dc4c4140fe33c")
