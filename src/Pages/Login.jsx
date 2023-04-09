@@ -50,16 +50,16 @@ const handleChange = e => {
                   <div className="d-flex flex-row align-items-center mb-4">
                     <i className="fas fa-envelope fa-lg me-3 fa-fw"></i>
                     <div className="form-outline flex-fill mb-0">
-                      <input type="email" id="form3Example3c" className="form-control" value= {values.email} onChange={handleChange} />
-                      <label className="form-label" for="form3Example3c">Mail</label>
+                      <input type="email" name ="email" className="form-control" value= {values.email} onChange={handleChange} />
+                      <label htmlfor="email" className="form-label" for="form3Example3c">Mail</label>
                     </div>
                   </div>
 
                   <div className="d-flex flex-row align-items-center mb-4">
                     <i className="fas fa-lock fa-lg me-3 fa-fw"></i>
                     <div className="form-outline flex-fill mb-0">
-                      <input type="password" id="form3Example4c" className="form-control"  value= {values.contraseña} onChange={handleChange} />
-                      <label className="form-label" for="form3Example4c">Contraseña</label>
+                      <input type="contraseña" name ="contraseña" className="form-control"  value= {values.contraseña} onChange={handleChange} />
+                      <label htmlfor="contraseña" className="form-label" for="form3Example4c">Contraseña</label>
                     </div>
                   </div>
 

@@ -7,6 +7,7 @@ import Main from './Components/Main';
 import Signup from './Pages/SignUp';
 import Login from './Pages/Login';
 import Favoritos from './Pages/Favoritos';
+import Premium from './Pages/Premium';
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <Route path="/favoritos" element={<Favoritos />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/premium" element={<Premium />} />
         </Routes>
         <Footer />
       </BrowserRouter>

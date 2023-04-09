@@ -105,8 +105,10 @@ function Search () {
                                     <li className="nav-item">
                                         <Link className="nav-link text-white-50" aria-current="page" to="/login"> Login</Link>
                                     </li>
+                                    <li className="nav-item"></li>
                                     <Link className="nav-link text-white-50" aria-current="page" to="/signup">Registrarse</Link>
-          
+                                    <li className="nav-item"></li>
+                                    <Link className="nav-link text-white-50" aria-current="page" to="/premium">Premium</Link>
                                 </ul>
                           
                                 <form className="d-flex" onClick={ searchMovies}>
