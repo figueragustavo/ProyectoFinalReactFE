@@ -102,7 +102,7 @@ function Search () {
                             <div className="collapse navbar-collapse" id="navbarSupportedContent">
                                 <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                                     <li className="nav-item">
-                                        <Link className="nav-link active text-white-50" aria-current="page" to="/movies" onClick={handleSubmit}><BiCameraMovie /> Películas</Link>
+                                        <Link className="nav-link active text-white-50" aria-current="page" to="/movies" onChange={handleSubmit}><BiCameraMovie /> Películas</Link>
                                     </li>
                                     <li className="nav-item">
                             <Link className="nav-link text-white-50" aria-current="page" to="/favoritos"><FiHeart /> Favoritos</Link>
@@ -111,7 +111,7 @@ function Search () {
                                         <Link className="nav-link text-white-50" aria-current="page" to="/login"> Login</Link>
                                     </li>
                                     <li className="nav-item"></li>
-                                    <Link className="nav-link text-white-50" aria-current="page" to="/signup">Registrarse</Link>
+                                    <Link className="nav-link text-white-50" aria-current="page" to="/register">Registrarse</Link>
                                     <li className="nav-item"></li>
                                     <Link className="nav-link text-white-50" aria-current="page" to="/premium">Premium</Link>
                                 </ul>
@@ -175,7 +175,6 @@ function Search () {
             </div>
         </div>
     </div>
-   
    
     )) }
               </div>

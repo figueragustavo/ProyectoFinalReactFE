@@ -3,9 +3,6 @@ import react from "react";
 
 function Premium (){
     return(
-
-
-      
         
 <div className="card border-success mb-3" >
   <div className="card-header bg-transparent border-success">Header</div>
