@@ -111,7 +111,7 @@ function Search () {
                                         <Link className="nav-link text-white-50" aria-current="page" to="/login"> Login</Link>
                                     </li>
                                     <li className="nav-item"></li>
-                                    <Link className="nav-link text-white-50" aria-current="page" to="/signup">Registrarse</Link>
+                                    <Link className="nav-link text-white-50" aria-current="page" to="/register">Registrarse</Link>
                                     <li className="nav-item"></li>
                                     <Link className="nav-link text-white-50" aria-current="page" to="/premium">Premium</Link>
                                 </ul>
