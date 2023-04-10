@@ -4,14 +4,18 @@ import react from "react";
 function Premium (){
     return(
         
-<div className="card border-success mb-3" >
-  <div className="card-header bg-transparent border-success">Header</div>
-  <div className="card-body text-success">
-    <h5 className="card-title">Success card title</h5>
-    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+<div className="card text-center">
+  <div className="card-header">
+    CONTRATA PREMIUM
   </div>
-  <div className="card-footer bg-transparent border-success">Footer</div>
-  
+  <div className="card-body">
+    <h5 className="card-title">MIRA PELICULAS Y SERIES ILIMITADAS</h5>
+    <p className="card-text">Perfiles sin Limite</p>
+    <a href="#" className="btn btn-primary">Ver medios de Pago</a>
+  </div>
+  <div className="card-footer text-muted">
+  MIRA PELICULAS Y SERIES ILIMITADAS
+  </div>
 </div>
 
 

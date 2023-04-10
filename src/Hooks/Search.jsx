@@ -81,7 +81,7 @@ function Search () {
     console.log(searchKey)
  } 
 
- const handleSubmit = (e) => {
+ const handleChange = (e) => {
   e.preventDefault();
   Swal.fire ('Debe contratar el paquete Premium para ver las Peliculas')
     
@@ -151,25 +151,25 @@ function Search () {
     <div>
     <nav className="navbar navbar-expand-lg bg-dark">
                         <div className="container-fluid">
-                            <Link className="navbar-brand text-white-50" to="/"> <GiPopcorn /> Pochocleros </Link>
+                            <Link className="navbar-brand text-white-50" to="/"> <GiPopcorn /> CINEFLIX </Link>
                             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                                 <span className="navbar-toggler-icon"></span>
                             </button>
                             <div className="collapse navbar-collapse" id="navbarSupportedContent">
                                 <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                                     <li className="nav-item">
-                                        <Link className="nav-link active text-white-50" aria-current="page" to="/movies" onChange={handleSubmit}><BiCameraMovie /> Películas</Link>
+                                        <Link className="nav-link active text-white-50" aria-current="page" to="/movies" onClick={handleChange}><BiCameraMovie /> PELICULAS</Link>
                                     </li>
                                     <li className="nav-item">
-                            <Link className="nav-link text-white-50" aria-current="page" to="/favoritos" onChange={handelAddFav}><FiHeart /> Favoritos</Link>
+                            <Link className="nav-link text-white-50" aria-current="page" to="/favoritos" onChange={handelAddFav}><FiHeart /> FAVORITOS</Link>
                         </li>
                                     <li className="nav-item">
-                                        <Link className="nav-link text-white-50" aria-current="page" to="/login"> Login</Link>
+                                        <Link className="nav-link text-white-50" aria-current="page" to="/login"> LOGIN</Link>
                                     </li>
                                     <li className="nav-item"></li>
-                                    <Link className="nav-link text-white-50" aria-current="page" to="/register">Registrarse</Link>
+                                    <Link className="nav-link text-white-50" aria-current="page" to="/register">REGISTRARSE</Link>
                                     <li className="nav-item"></li>
-                                    <Link className="nav-link text-white-50" aria-current="page" to="/premium">Premium</Link>
+                                    <Link className="nav-link text-white-50" aria-current="page" to="/premium">PREMIUM</Link>
                                 </ul>
                           
                                 <form className="d-flex" onClick={ searchMovies}>
