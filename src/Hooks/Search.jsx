@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 import { FiHeart } from 'react-icons/fi';
 import Youtube from 'react-youtube';
 import { Context } from "../Context/AppContext";
+import { useParams } from "react-router-dom";
 
 
 function Search () { 
@@ -24,7 +25,9 @@ function Search () {
   const [movies, setMovies] = useState([]);
   const [playing, setPlaying] = useState(false);
   const [activado, setActivado] = useState(false);
-  const { favValues, setfavValues } = useContext(Context)
+  const { favValues } = useContext(Context);
+  const {id} =useParams();
+
 
 
   //peticion api
@@ -88,8 +91,7 @@ function Search () {
   }
 
   const handelAddFav = (e) => {
-    e.preventDefault();
-    addFav()
+    addFav(movie.id)
 
   }
 
@@ -97,26 +99,23 @@ function Search () {
     try{
       const request = await axios.post(`${API_URL}/addFav`, favValues);
       console.log(request)
-      const data = request.data   //esto va tambien 
+      const data = request.data   
       console.log(data)
       console.log(data.data)
         if(data.data.token != null) {
-          Swal.fire("Agregado el Fav")
+          Swal.fire("Agregado a Favoritos")
         } else{
           Swal.fire("No se pudo agregar")
         }
   
-    }catch (e){
-      console.log(e)
-      if(e.response.data.error === "ERROR_ADD_FAV"){
-        return  Swal.fire ('Esta peli ya se encuentra registrado en fav')
-      }else{
-        return Swal.fire(e.msg)
-      }
-    
-    }
-   }
+    }  catch (error) {
+      console.log(error)
+      return Swal.fire(error.msg)
 
+    }
+
+    
+   }
    const handelGetFavByUser = (e) => {
     e.preventDefault();
     getFavByUser()
@@ -140,6 +139,10 @@ function Search () {
     }
 
    }
+  
+  
+  
+   
   
  useEffect(()=> {
   fetchMovies();
@@ -227,7 +230,8 @@ function Search () {
                 <h5 className="card-title">{movie.title}</h5>
                 </div>
                 <div className='d-flex justify-content-between'>
-                <Link to={{pathname:`/favoritos/${movie.id}`, state:{some:movie.id}}} className="text-danger" ><FiHeart fill={activado ? "red" : "none"} onClick={() => activado ? setActivado(false): setActivado(true)} /></Link >
+                <Link to={{pathname:`/favoritos/${movie.id}`, state:{some:movie.id}}} onClick={(e) => handelAddFav(e.target.value)}><FiHeart fill={activado ? "red" : "none"} /></Link >
+                                                                                            
             </div>
         </div>
     </div>

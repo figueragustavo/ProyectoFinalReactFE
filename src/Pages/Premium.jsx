@@ -14,8 +14,8 @@ function Premium (){
     <a href="#" className="btn btn-primary">Ver medios de Pago</a>
   </div>
   <div className="card-footer text-muted">
-  MIRA PELICULAS Y SERIES ILIMITADAS
-  
+ $500 FINAL POR MES
+
   </div>
   </div>
 </div>
