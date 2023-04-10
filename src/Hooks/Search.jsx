@@ -104,43 +104,16 @@ function Search () {
       console.log(data.data)
         if(data.data.token != null) {
           Swal.fire("Agregado a Favoritos")
-        } else{
-          Swal.fire("No se pudo agregar")
-        }
+        } 
   
     }  catch (error) {
       console.log(error)
-      return Swal.fire(error.msg)
+      return Swal.fire("ERROR")
 
     }
 
     
    }
-   const handelGetFavByUser = (e) => {
-    e.preventDefault();
-    getFavByUser()
-
-  }
-
-   const getFavByUser = async () => {
-    try {
-      const request = await axios.post(`${API_URL}/getFavByUser`, favValues);
-      const data = request.data
-      console.log(data)
-      if (data.data.token != null) {
-        Swal.fire("Mostrando Fav")
-      } else {
-        Swal.fire("no se puede mostrar Fav")
-      }
-    } catch (error) {
-      console.log(error)
-      return Swal.fire(error.msg)
-
-    }
-
-   }
-  
-  
   
    
   

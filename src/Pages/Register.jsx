@@ -4,6 +4,7 @@ import fondoLogin from '../fondoLogin.jpg';
 import axios from 'axios';
 import {Context} from "../Context/AppContext";
 import {API_URL } from "../utils/Url";
+import { Link } from 'react-router-dom';
 //import {BASE_URL} from '../../utils/BASE_URL' ; sujeto a modificacion
 
 
@@ -99,8 +100,11 @@ const createUser = async () => {
                           </div>
         
                         </form>
-        
-                      </div>
+                        <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4"></div>
+                    <Link className="nav-link text-red-50" aria-current="page" to="/login">YA TENGO CUENTA</Link>
+                  </div>
+                  <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4"></div>
+                    <Link className="nav-link text-red-50" aria-current="page" to="/">INICIO</Link>
                       <div className="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
                       <img src={fondoLogin} className="img-fluid" alt="Sample image" />
                       </div>

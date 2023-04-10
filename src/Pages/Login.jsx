@@ -76,7 +76,12 @@ const Login = () => {
                         <button type="button" className="btn btn-primary btn-lg" onClick={onhandleSubmit} >Iniciar sesión</button>
                       </div>
                     </form>
+                    <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4"></div>
+                    <Link className="nav-link text-red-50" aria-current="page" to="/register">NO TENGO CUENTA</Link>
                   </div>
+                  <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4"></div>
+                    <Link className="nav-link text-red-50" aria-current="page" to="/">INICIO</Link>
+      
                   <div className="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
                     <img src={fondoLogin} className="img-fluid" alt="Sample image" />
                   </div>
