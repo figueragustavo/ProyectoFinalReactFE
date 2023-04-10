@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext} from "react";
 import React from "react";
 import axios from 'axios';
 import Swal from 'sweetalert2';
@@ -7,6 +7,7 @@ import { GiPopcorn } from 'react-icons/gi';
 import { Link } from 'react-router-dom';
 import { FiHeart } from 'react-icons/fi';
 import Youtube from 'react-youtube';
+import { Context } from "../Context/AppContext";
 
 
 function Search () { 
@@ -23,6 +24,7 @@ function Search () {
   const [movies, setMovies] = useState([]);
   const [playing, setPlaying] = useState(false);
   const [activado, setActivado] = useState(false);
+  const { favValues, setfavValues } = useContext(Context)
 
 
   //peticion api
@@ -84,6 +86,60 @@ function Search () {
   Swal.fire ('Debe contratar el paquete Premium para ver las Peliculas')
     
   }
+
+  const handelAddFav = (e) => {
+    e.preventDefault();
+    addFav()
+
+  }
+
+  const addFav = async () => {
+    try{
+      const request = await axios.post(`${API_URL}/addFav`, favValues);
+      console.log(request)
+      const data = request.data   //esto va tambien 
+      console.log(data)
+      console.log(data.data)
+        if(data.data.token != null) {
+          Swal.fire("Agregado el Fav")
+        } else{
+          Swal.fire("No se pudo agregar")
+        }
+  
+    }catch (e){
+      console.log(e)
+      if(e.response.data.error === "ERROR_ADD_FAV"){
+        return  Swal.fire ('Esta peli ya se encuentra registrado en fav')
+      }else{
+        return Swal.fire(e.msg)
+      }
+    
+    }
+   }
+
+   const handelGetFavByUser = (e) => {
+    e.preventDefault();
+    getFavByUser()
+
+  }
+
+   const getFavByUser = async () => {
+    try {
+      const request = await axios.post(`${API_URL}/getFavByUser`, favValues);
+      const data = request.data
+      console.log(data)
+      if (data.data.token != null) {
+        Swal.fire("Mostrando Fav")
+      } else {
+        Swal.fire("no se puede mostrar Fav")
+      }
+    } catch (error) {
+      console.log(error)
+      return Swal.fire(error.msg)
+
+    }
+
+   }
   
  useEffect(()=> {
   fetchMovies();
@@ -105,7 +161,7 @@ function Search () {
                                         <Link className="nav-link active text-white-50" aria-current="page" to="/movies" onChange={handleSubmit}><BiCameraMovie /> Películas</Link>
                                     </li>
                                     <li className="nav-item">
-                            <Link className="nav-link text-white-50" aria-current="page" to="/favoritos"><FiHeart /> Favoritos</Link>
+                            <Link className="nav-link text-white-50" aria-current="page" to="/favoritos" onChange={handelAddFav}><FiHeart /> Favoritos</Link>
                         </li>
                                     <li className="nav-item">
                                         <Link className="nav-link text-white-50" aria-current="page" to="/login"> Login</Link>
