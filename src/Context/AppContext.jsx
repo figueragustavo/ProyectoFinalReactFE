@@ -14,6 +14,11 @@ const AppContext = ({ children }) => {
         passConfirm: "",
     });
 
+    const [favValues, setfavValues] = useState({
+        user_id: "",
+        movie_id: ""
+    });
+
 
     useEffect(() => {
         axios
@@ -31,7 +36,9 @@ const AppContext = ({ children }) => {
             value={{ 
                 movies, 
                 userValues, 
-                setUserValues, 
+                setUserValues,
+                favValues, 
+                setfavValues,
             }}
             >
              {children}
