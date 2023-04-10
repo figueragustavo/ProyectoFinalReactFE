@@ -230,7 +230,7 @@ function Search () {
                 <h5 className="card-title">{movie.title}</h5>
                 </div>
                 <div className='d-flex justify-content-between'>
-                <Link to={{pathname:`/favoritos/${movie.id}`, state:{some:movie.id}}} onClick={(e) => handelAddFav(e.target.value)}><FiHeart fill={activado ? "red" : "none"} /></Link >
+                <Link to={{pathname:`/favoritos/${movie.id}`, state:{some:movie.id}}} onClick={(e) => handelAddFav(e.target.value)}><FiHeart fill={activado ? "red" : "none"} onClick={() => activado ? setActivado(false): setActivado(true)} /></Link >
                                                                                             
             </div>
         </div>

@@ -14,6 +14,7 @@ const Login = () => {
   const onhandleSubmit = (e) => {
     e.preventDefault()
     loginUser();
+    e.target.reset();
 
   }
   const onhandleChange = (e) => {
