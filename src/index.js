@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import AppContextProvider from './Context/AppContext';
+import AppContext from './Context/AppContext';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
@@ -10,11 +10,11 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <AppContextProvider>
+  <AppContext>
 
     <App />
   
-  </AppContextProvider>
+  </AppContext>
 );
 
 // If you want to start measuring performance in your app, pass a function

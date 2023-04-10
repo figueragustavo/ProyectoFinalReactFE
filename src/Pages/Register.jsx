@@ -1,18 +1,18 @@
-import React , { useContext, useState } from "react";
+import React , { useContext } from "react";
 import Swal from 'sweetalert2';
 import fondoLogin from '../fondoLogin.jpg';
 import axios from 'axios';
-import AppContextProvider from "../Context/AppContext";
+import {Context} from "../Context/AppContext";
+import {API_URL } from "../utils/Url";
 //import {BASE_URL} from '../../utils/BASE_URL' ; sujeto a modificacion
 
 
-const Signup = () => {
-const {userValues, setUserValues} = useContext() // <--aca va (context)
+const Register = () => {
+const {userValues, setUserValues} = useContext(Context) // <--aca va (context)
     
 const onhandleSubmit = (e) => {
-    e.preventDefault()
-   // createHashRouter(); esto sujeto a modificacion
-      
+    e.preventDefault();
+    createUser();
 }
 const onhandleChange = (e) => {
   e.preventDefault()
@@ -23,27 +23,29 @@ const onhandleChange = (e) => {
 
   })
 }
-//const createUser = async () => {
-  //try{
-  //  const request = await axios.post(`${BASE_URL}/users/register`, userValues);
- //  const data = request.data   esto va tambien 
-//    console.log(data)
- //     if(data.created) {
- //       Swal.fire(data.msg)
- //     } else{
-  //      Swal.fire(data.msg)
-  //    }
+const createUser = async () => {
+  try{
+    const request = await axios.post(`${API_URL}/register`, userValues);
+    console.log(request)
+    const data = request.data   //esto va tambien 
+    console.log(data)
+    console.log(data.data)
+      if(data.data.token != null) {
+        Swal.fire("Registrado")
+      } else{
+        Swal.fire("No Registrado")
+      }
 
- // }catch (error){
-//    console.log(error)
-//    if(error.response.data.code === ""){
-//      return  Swal.fire ('Este email ya se encuentra registrado')
-//    }else{
-//      return Swal.fire(error.msg)
- //   }
+  }catch (e){
+    console.log(e)
+    if(e.response.data.error === "ERROR_REGISTER_USER"){
+      return  Swal.fire ('Este email ya se encuentra registrado')
+    }else{
+      return Swal.fire(e.msg)
+    }
   
-//  }
-// }
+  }
+ }
 
 
       return(
@@ -58,13 +60,13 @@ const onhandleChange = (e) => {
         
                         <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Registrate</p>
         
-                        <form className="mx-1 mx-md-4" >
+                        <form className="mx-1 mx-md-4" onSubmit={onhandleSubmit} >
         
                           <div className="d-flex flex-row align-items-center mb-4">
                             <i className="fas fa-user fa-lg me-3 fa-fw"></i>
                             <div className="form-outline flex-fill mb-0">
-                              <input type="nombre" name ="nombre" class="form-control" value= {userValues.nombre} onChange={onhandleChange} />
-                              <label htmlfor="nombre" className="form-label" for="form3Example1c">Nombre</label>
+                              <input type="name" name ="name" className="form-control" value= {userValues.name} onChange={onhandleChange} />
+                              <label htmlFor="name" className="form-label" >Nombre</label>
                             </div>
                           </div>
         
@@ -72,35 +74,28 @@ const onhandleChange = (e) => {
                             <i className="fas fa-envelope fa-lg me-3 fa-fw"></i>
                             <div className="form-outline flex-fill mb-0">
                               <input type="email" name ="email" className="form-control" value= {userValues.email} onChange={onhandleChange}/>
-                              <label htmlfor="email" className="form-label" for="form3Example3c">Mail</label>
+                              <label htmlFor="email" className="form-label" >Mail</label>
                             </div>
                           </div>
         
                           <div className="d-flex flex-row align-items-center mb-4">
                             <i className="fas fa-lock fa-lg me-3 fa-fw"></i>
                             <div className="form-outline flex-fill mb-0">
-                              <input type="contraseña" name ="contraseña" class="form-control" value= {userValues.contraseña} onChange={onhandleChange} />
-                              <label htmlfor="contraseña" className="form-label" for="form3Example4c">Contraseña</label>
+                              <input type="password" name ="password" className="form-control" value= {userValues.password} onChange={onhandleChange} />
+                              <label htmlFor="password" className="form-label" >Contraseña</label>
                             </div>
                           </div>
         
                           <div className="d-flex flex-row align-items-center mb-4">
                             <i className="fas fa-key fa-lg me-3 fa-fw"></i>
                             <div className="form-outline flex-fill mb-0">
-                              <input type="contraseña" name ="contraseña" className="form-control" value= {userValues.contraseña} onChange={onhandleChange} />
-                              <label htmlfor="contraseña" className="form-label" for="form3Example4cd">Repetí tu contraseña</label>
+                              <input type="passConfirm" name ="passConfirm" className="form-control" value= {userValues.passConfirm} onChange={onhandleChange} />
+                              <label htmlFor="passConfirm" className="form-label" >Repetí tu contraseña</label>
                             </div>
                           </div>
         
-                          <div className="form-check d-flex justify-content-center mb-5">
-                            <input className="form-check-input me-2" type="checkbox" value="" id="form2Example3c"  />
-                            <label className="form-check-label" for="form2Example3">
-                              <a href="#!">Terminos y Condiciones</a>
-                            </label>
-                          </div>
-        
                           <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                            <button type="button" className="btn btn-primary btn-lg" onClick={onhandleSubmit}>Registrarse</button>
+                            <button type="submit" className="btn btn-primary btn-lg"  >Registrarse</button>
                           </div>
         
                         </form>
@@ -120,4 +115,4 @@ const onhandleChange = (e) => {
         
 }
 
-export default Signup;
+export default Register;

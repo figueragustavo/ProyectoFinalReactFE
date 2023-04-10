@@ -4,7 +4,7 @@ import AppContextProvider from "./Context/AppContext";
 import { BrowserRouter,  Route,  Routes } from 'react-router-dom';
 import Footer from './Components/Footer';
 import Main from './Components/Main';
-import Signup from './Pages/SignUp';
+import Register from './Pages/Register';
 import Login from './Pages/Login';
 import Favoritos from './Pages/Favoritos';
 import Premium from './Pages/Premium';
@@ -17,7 +17,7 @@ function App() {
         <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/favoritos" element={<Favoritos />} />
-        <Route path="/signup" element={<Signup />} />
+        <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/premium" element={<Premium />} />
         </Routes>
