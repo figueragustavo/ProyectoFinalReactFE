@@ -15,6 +15,7 @@
     "react-scripts": "5.0.1",
     "react-youtube": "^10.1.0",
     "sweetalert2": "^11.7.3",
+    "vercel": "^28.18.4",
     "web-vitals": "^2.1.4",
     "youtube": "^0.1.0"
   },
