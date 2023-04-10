@@ -3,7 +3,7 @@ import react from "react";
 
 function Premium (){
     return(
-        
+      <div className= "premium" >
 <div className="card text-center">
   <div className="card-header">
     CONTRATA PREMIUM
@@ -15,6 +15,8 @@ function Premium (){
   </div>
   <div className="card-footer text-muted">
   MIRA PELICULAS Y SERIES ILIMITADAS
+  
+  </div>
   </div>
 </div>
 
