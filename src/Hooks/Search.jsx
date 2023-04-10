@@ -89,6 +89,11 @@ function Search () {
   Swal.fire ('Debe contratar el paquete Premium para ver las Peliculas')
     
   }
+  const handleChangeFav = (e) => {
+    e.preventDefault();
+    Swal.fire ('Debe estar Logueado para acceder a Favoritos')
+      
+    }
 
   const handelAddFav = (e) => {
     addFav(movie.id)
@@ -137,7 +142,7 @@ function Search () {
                                         <Link className="nav-link active text-white-50" aria-current="page" to="/movies" onClick={handleChange}><BiCameraMovie /> PELICULAS</Link>
                                     </li>
                                     <li className="nav-item">
-                            <Link className="nav-link text-white-50" aria-current="page" to="/favoritos" onChange={handelAddFav}><FiHeart /> FAVORITOS</Link>
+                            <Link className="nav-link text-white-50" aria-current="page" to="/favoritos" onClick={handleChangeFav} onChange={handelAddFav}><FiHeart /> FAVORITOS</Link>
                         </li>
                                     <li className="nav-item">
                                         <Link className="nav-link text-white-50" aria-current="page" to="/login"> LOGIN</Link>
@@ -182,7 +187,7 @@ function Search () {
                       <button className="boton" onClick={() => setPlaying(true) }
                       type="button"> VER TRAILER
                       </button>
-                    ) : ( "trailer no disponible"
+                    ) : ( "TRAILER NO DISPONIBLE"
                     )}
                     <h1 className="text-white">{movie.title}</h1>
                     <p className="text-white">{movie.overview}</p>
